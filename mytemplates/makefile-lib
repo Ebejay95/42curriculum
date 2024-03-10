@@ -1,0 +1,57 @@
+NAME=libft.a
+
+# optional
+CODEDIRS=. ./libft/
+# INCDIRS=. ./include/ #can be a list
+
+# define compiler command that shall be used
+CC=cc
+
+# define flags for compiler globaly
+CFLAGS= -Wall -Wextra -Werror
+# can be defined as the following - generate flags for compiler like -I . -I ./includes/
+# CFLAGS=-Wall -Wextra -g $(foreach D,$(INCDIRS),-I$(D)) $(OPT) $(DEPFLAGS)
+# define flags for compiler to interact with make for handling dependencies to libraries
+DEPFLAGS= -MP -MD
+
+# select files to be affected
+# CFILES=$(wildcard *.c)
+# can be defined as the following - find all .c files in all directories
+CFILES=$(foreach D,$(CODEDIRS),$(wildcard $(D)/*.c))
+
+
+# OBJECTS=$(CFILES:.c=.o)
+# can be defined as the following - recognizes patterns by patternsubstitution and turns all %.c in %.o and because of -MD option deals wit .d files
+OBJECTS=$(patsubst %.c,%.o,$(CFILES))
+DEPFILES=$(patsubst %.c,%.d,$(CFILES))
+
+all: $(NAME)
+
+$(NAME): $(OBJECTS)
+	ar rs $(NAME) $(OBJECTS)
+
+# regular expression where % is a wildcard
+# define generic rule that example.o is dependend on example.c
+# if you want to create ex.o do the following stuff by placeholders $@:$^
+%.o:%.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
+# Bereinige das Projekt von allen kompilierten Dateien
+# Benutze den Befehl 'rm -rf' zum sicheren Entfernen von Dateien und Verzeichnissen
+# $(BINARY) ist der Name der ausführbaren Datei, die entfernt werden soll
+# $(OBJECTS) sind die Objektdateien (.o), die entfernt werden sollen
+clean:
+	rm -rf $(OBJECTS) $(DEPFILES)
+
+# Vollständige Bereinigung, identisch zu 'clean' in diesem Kontext
+# Wiederhole den Befehl 'rm -rf' für die gleichen Ziele wie bei 'clean'
+# In manchen Projekten könnte 'fclean' zusätzlich andere Dateien entfernen, z.B. generierte Dokumentation
+fclean:
+	rm -rf $(NAME) $(OBJECTS) $(DEPFILES)
+
+# Erzwinge eine vollständige Neukompilierung des Projekts
+# Zuerst führe 'fclean' aus, um alles zu bereinigen. Dies stellt sicher, dass keine Restdateien von vorherigen Builds übrig bleiben
+# Danach führe 'all' aus, um das Projekt von Grund auf neu zu kompilieren
+re:
+	$(MAKE) fclean
+	$(MAKE) all

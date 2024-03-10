@@ -1,0 +1,39 @@
+/*
+    #ifndef     if not defined verhindert doppelte initialisierung
+    #define     definiert den Namen der Library
+*/
+#ifndef MY_LIB
+#define MY_LIB
+
+// Makrodefinition: Berechnet das Quadrat einer Zahl
+#define SQUARE(x) ((x) * (x))
+
+// Typdefinition: Definiert einen neuen Datentyp für komplexe Zahlen
+typedef struct {
+    double real;
+    double imag;
+} ComplexNumber;
+
+
+// Enum-Deklaration: Farben - deinieren einer Variable, die nur gewisse Werte annehmen kann
+typedef enum {
+    RED,
+    GREEN,
+    BLUE,
+    YELLOW,
+    BLACK,
+    WHITE
+} Color
+
+// Funktionsdeklaration: Prototyp der Additionsfunktion
+// Informiert den Compiler über die Existenz dieser Funktion, definiert sie aber nicht.
+int add(int a, int b);
+
+// Extern-Deklaration: Deklariert eine globale Variable, die anderswo definiert wird. ACHTUNG - nicht in 42 nutzen
+extern int globalExample;
+
+/*
+    #ifndef     if not defined verhindert doppelte initialisierung
+    #endif      beendet den bedingunsbereich
+*/
+#endif // MY_LIB
