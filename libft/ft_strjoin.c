@@ -1,44 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_split.c                                         :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/11 18:31:19 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/12 00:01:56 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/11 21:52:05 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/11 22:01:48 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t 	count_splits(char const *str, char c)
+char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t 	count;
-	int 	i;
+	size_t	len_s1;
+	size_t	len_s2;
+	char	*join;
+	char	*join_work;
 
-	count = 0;
-	i = 0;
-	if(*str == '\0')
-		return(0);
-    while (str[i] == c) {
-        i++;
-	if(str[0] != c)
-		count++;
-	while (str[i] != '\0')
+	len_s1 = ft_strlen(s1);
+	len_s2 = ft_strlen(s2);
+	join = malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (!join)
+		return (NULL);
+	join_work = join;
+	while (*s1 != '\0')
 	{
-		if(c == str[i] && c != str[i + 1] &&  str[i + 1] != '\0')
-			count++;
-		i++;
+		*join_work = *s1;
+		join_work++;
+		s1++;
 	}
-	return (count),
-}
-
-
-/// @brief 
-/// @param str 
-/// @param c 
-/// @return 
-char **ft_split(char const *s, char c)
-{
+	while (*s2 != '\0')
+	{
+		*join_work = *s2;
+		join_work++;
+		s2++;
+	}
+	*join_work = '\0';
+	return (join);
 }
