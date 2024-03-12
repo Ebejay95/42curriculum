@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:31:19 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/12 00:01:56 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/12 13:12:56 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ size_t 	count_splits(char const *str, char c)
 	i = 0;
 	if(*str == '\0')
 		return(0);
-    while (str[i] == c) {
+    while (str[i] == c)
         i++;
 	if(str[0] != c)
 		count++;
@@ -31,14 +31,31 @@ size_t 	count_splits(char const *str, char c)
 			count++;
 		i++;
 	}
-	return (count),
+	return (count);
 }
 
 
-/// @brief 
-/// @param str 
-/// @param c 
-/// @return 
 char **ft_split(char const *s, char c)
 {
+	size_t	splitters_size;
+	char	**splitters;
+	int		i;
+	int		substr;
+
+	i = 0;
+	splitters_size = count_splits(s, c);
+	splitters = ft_calloc(splitters_size + 1, sizeof(char *));
+	if(splitters == NULL)
+		return (NULL);
+	while (s[i] != '\0')
+	{
+		while (s[i] == c && s[i] != '\0')
+			i++;
+		substr = i;
+		while (s[i] != c && s[i] != '\0')
+			i++;
+		// Aus der differenz hier mache eine tugend und allociere differenz mit NULL check
+		//kopiere mit indize zusaätlzich in spliiters und terminiere mit null. nutze einen anderen index für splitters
+	}
+	return (splitters);
 }
