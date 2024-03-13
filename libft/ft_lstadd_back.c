@@ -6,12 +6,21 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:19:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 12:51:05 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/13 19:03:53 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief 		add a node to the end of a linked list
+///	@algorithm	1)	initialize a cpy of lst to work with and not loose the
+///					initial lst pointer and define it as such
+///				2)	stop if new is not defined
+///				3)	define new as the lst if it has been empty before and stop
+///				4)	walk to the last defined node of the lst (its next is null)
+///					and set its next to new so it will be the new last node
+/// @param lst 	the linked list
+/// @param new	the node to be added
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*work;
