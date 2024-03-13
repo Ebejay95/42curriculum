@@ -1,31 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchr.c                                        :+:      :+:    :+:   */
+/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/07 16:09:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 15:28:32 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/13 12:19:34 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/13 12:51:05 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strchr(const char *src, int c)
+void	ft_lstadd_back(t_list **lst, t_list *new)
 {
-	unsigned char	*csrc;
-	unsigned char	cc;
+	t_list	*work;
 
-	cc = (unsigned char)c;
-	csrc = (unsigned char *)src;
-	while (*csrc != '\0')
+	work = *lst;
+	if (new == NULL)
+		return ;
+	if (work == NULL)
 	{
-		if (cc == *csrc)
-			return ((char *)csrc);
-		csrc++;
+		*lst = new;
+		return ;
 	}
-	if (cc == '\0')
-		return ((char *)csrc);
-	return (NULL);
+	while (work->next != NULL)
+	{
+		work = work->next;
+	}
+	work->next = new;
 }
