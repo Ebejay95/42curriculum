@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 21:52:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 09:43:24 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 13:28:38 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,12 @@
 /// @return join	pointer to the joined result	
 char	*ft_strjoin(char const *s1, char const *s2)
 {
-	size_t	len_s1;
-	size_t	len_s2;
 	char	*join;
 	char	*join_work;
 
-	len_s1 = ft_strlen(s1);
-	len_s2 = ft_strlen(s2);
-	join = malloc((len_s1 + len_s2 + 1) * sizeof(char));
+	if (s1 == NULL || s2 == NULL)
+		return (NULL);
+	join = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!join)
 		return (NULL);
 	join_work = join;

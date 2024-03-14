@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 12:19:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 19:03:53 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:14:06 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,6 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 		return ;
 	}
 	while (work->next != NULL)
-	{
 		work = work->next;
-	}
 	work->next = new;
 }

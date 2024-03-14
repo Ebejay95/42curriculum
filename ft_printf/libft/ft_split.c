@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:31:19 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 07:24:22 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:53:34 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 /// @param s	the string analyze
 /// @param c 	the char to count splits by
 /// @return 	number of splits of s by c
-size_t	count_substrs(char const *s, char c)
+static size_t	count_substrs(char const *s, char c)
 {
 	size_t	count;
 	int		i;
@@ -62,22 +62,22 @@ size_t	count_substrs(char const *s, char c)
 ///								4)	perform a realtive copying process from s
 ///									to substr
 ///								5)	terminate and return substr
-/// @param substr_rel_start 	the relative start of substring in s
-/// @param substr_rel_end 		the relative end s[i] of substring in s
+/// @param substr_start 	the relative start of substring in s
+/// @param substr_end 		the relative end s[i] of substring in s
 /// @param s 					the src str
 /// @return 
-char	*build_substr(int substr_rel_start, int substr_rel_end, const char *s)
+static char	*build_substr(int substr_start, int substr_end, const char *s)
 {
 	int		substr_idx;
 	char	*substr;
 
 	substr_idx = 0;
-	substr = ft_calloc((substr_rel_end - substr_rel_start) + 1, sizeof(char));
+	substr = ft_calloc((substr_end - substr_start) + 1, sizeof(char));
 	if (!substr)
 		return (NULL);
-	while (substr_idx < (substr_rel_end - substr_rel_start))
+	while (substr_idx < (substr_end - substr_start))
 	{
-		substr[substr_idx] = s[substr_rel_start + substr_idx];
+		substr[substr_idx] = s[substr_start + substr_idx];
 		substr_idx++;
 	}
 	substr[substr_idx] = '\0';
@@ -92,7 +92,7 @@ char	*build_substr(int substr_rel_start, int substr_rel_end, const char *s)
 /// @param substr_idx 	current substring index
 ///	@param substrs 		reference to pointer that holds all substrings
 /// @return NULL		substrs pointers is destroyed
-char	**ft_split_clear_all(int substr_idx, char **substrs)
+static char	**ft_split_clear_all(int substr_idx, char **substrs)
 {
 	while (substr_idx > 0)
 	{
@@ -132,14 +132,14 @@ char	**ft_split_clear_all(int substr_idx, char **substrs)
 /// @param c 				the char to split string s by
 ///	@param substrs 			reference to pointer that the results be stored in
 /// @return substrs	| NULL	pointer to substrings or NULL if allocation failed
-char	**build_substrs(char const *s, char c, char **substrs)
+static char	**build_substrs(char const *s, char c, char **substrs)
 {
 	int	i;
-	int	substr_idx;
+	int	substrs_idx;
 	int	substr_rel_start;
 
 	i = 0;
-	substr_idx = 0;
+	substrs_idx = 0;
 	while (s[i] != '\0')
 	{
 		while (s[i] == c && s[i] != '\0')
@@ -149,10 +149,10 @@ char	**build_substrs(char const *s, char c, char **substrs)
 			i++;
 		if (substr_rel_start != i)
 		{
-			substrs[substr_idx] = build_substr(substr_rel_start, i, s);
-			if (!substrs[substr_idx])
-				return (ft_split_clear_all(substr_idx, substrs));
-			substr_idx++;
+			substrs[substrs_idx] = build_substr(substr_rel_start, i, s);
+			if (!substrs[substrs_idx])
+				return (ft_split_clear_all(substrs_idx, substrs));
+			substrs_idx++;
 		}
 	}
 	return (substrs);
@@ -169,14 +169,14 @@ char	**build_substrs(char const *s, char c, char **substrs)
 /// @param s	the string to split
 /// @param c 	the char to split string s by
 /// @return 	pointer to pointers to subtrings of s, split by the char c
-char	**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char separator)
 {
 	char			**substrs;
-	unsigned char	cc;
+	unsigned char	cseparator;
 
-	cc = (unsigned char)c;
-	substrs = ft_calloc(count_substrs(s, cc) + 1, sizeof(char *));
+	cseparator = (unsigned char)separator;
+	substrs = ft_calloc(count_substrs(s, cseparator) + 1, sizeof(char *));
 	if (substrs == NULL)
 		return (NULL);
-	return (build_substrs(s, cc, substrs));
+	return (build_substrs(s, cseparator, substrs));
 }

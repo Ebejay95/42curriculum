@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:31:11 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 09:31:36 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 15:20:25 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ size_t	ft_strlcpy(char *trg, const char *src, size_t size)
 
 	src = (char *)src;
 	len = ft_strlen(src);
-	if (trg == NULL)
-		return (0);
 	if (size == 0)
 		return (len);
 	while (*src != '\0' && size > 1)
