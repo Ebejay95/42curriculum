@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:06:07 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 18:13:43 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/12 21:16:54 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/13 21:17:59 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/// @brief		check a char represented by an int to be 32 - 126 defined as
-///				printable
-/// @algorithm	check the char by ascii range 32 - 126
-/// @param c	char represented by an int to check
-/// @return		int 1 || 0
-int	ft_isprint(int c)
+/// @brief		write a char to the desired file descriptor
+/// @param c 	the char to write
+/// @param fd 	the file descriptor
+///				0	stdin 	do not use!
+///				1	stdout	to console
+///				2	stderr	to error log
+///				2<	to file in writing status
+void	ft_putchar_fd(char c, int fd)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	write(fd, &c, 1);
 }

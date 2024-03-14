@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 10:09:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 17:50:11 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 18:13:07 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@
 int	ft_isalnum(int c)
 {
 	if (ft_isdigit(c) || ft_isalpha(c))
-	{
 		return (1);
-	}
 	return (0);
 }
