@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:53:03 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 18:48:04 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:31:43 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,23 @@
 
 /// @brief 			modify the params of ft_itoa
 ///	@algorithm		1)	declare a int to work with but not lose real int n
-///					2)	initialize minus and len and check the minus state by n
+///					2)	initialize minus and len and check the negative state 
+///						by n
 ///					3)	get the later needed str len by pre processing the 
 ///						modulo and division operations necessary to get the
 ///						opportunity to convert int to char by + '0'
 /// @param len		len of the string needed for the number
 /// @param n		number as int
 /// @param minus 	state handler for sign (-)
-void	initialize(int *len, int *n, int *minus)
+static void	initialize(int *len, int *n, int *negative)
 {
 	int	n_work;
 
-	*minus = 0;
+	*negative = 0;
 	*len = 0;
 	if (*n < 0)
 	{
-		*minus = 1;
+		*negative = 1;
 		*n = *n * (-1);
 	}
 	n_work = *n;
@@ -68,27 +69,27 @@ void	initialize(int *len, int *n, int *minus)
 char	*ft_itoa(int n)
 {
 	int		len;
-	int		minus;
+	int		negative;
 	char	*str;
 
 	if (n == 0)
 		return (ft_strdup("0"));
 	if (n == -2147483648)
 		return (ft_strdup("-2147483648"));
-	initialize(&len, &n, &minus);
-	str = ft_calloc((len + 1 + minus), sizeof(char));
+	initialize(&len, &n, &negative);
+	str = ft_calloc((len + 1 + negative), sizeof(char));
 	if (!str)
 		return (NULL);
-	if (minus)
+	if (negative)
 		str[0] = '-';
 	str[len] = '\0';
 	while (n > 0)
 	{
-		if (!minus)
+		if (!negative)
 			len--;
 		str[len] = (n % 10) + '0';
 		n = n / 10;
-		if (minus)
+		if (negative)
 			len--;
 	}
 	return (str);

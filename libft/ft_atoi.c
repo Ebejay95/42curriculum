@@ -6,12 +6,13 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 16:37:30 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 17:27:51 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 14:21:44 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+///TODO:		set in own file after evals
 /// @brief		checks if a char is an char declared as a whitespace character
 ///				by comparing the ascii int values in their ranges
 /// @param c 	the char to check
@@ -62,7 +63,7 @@ int	ft_atoi(const char *str)
 		i = i * 10 + (*str - '0');
 		str++;
 	}
-	if (ms % 2 != 0)
+	if (ms != 0)
 		i = (i * (-1));
 	return (i);
 }

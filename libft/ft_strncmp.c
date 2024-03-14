@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:52:21 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 09:13:25 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:16:29 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,6 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	unsigned char	us1;
 	unsigned char	us2;
 
-	us1 = 0;
-	us2 = 0;
 	while (n > 0 && (*s1 != '\0' || *s2 != '\0'))
 	{
 		us1 = (unsigned char)*s1;

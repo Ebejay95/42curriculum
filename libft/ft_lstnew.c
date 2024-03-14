@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/13 09:56:59 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 20:15:35 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 16:26:32 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_list	*ft_lstnew(void *content)
 {
 	t_list	*node;
 
-	node = ft_calloc(sizeof(t_list), 1);
+	node = malloc(sizeof(t_list));
 	if (node == NULL)
 		return (NULL);
 	node->content = content;
