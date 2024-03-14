@@ -6,12 +6,17 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 23:55:36 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 00:20:38 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 07:59:57 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+/// @brief		apply a function on each char in a string
+///	@algorithm	1)	declare index and check s and f are set
+///				2)	apply f on each pointer value in while
+/// @param s 	the string to manipulate
+/// @param f	the function to manipulate used as callback
 void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
 	int		i;

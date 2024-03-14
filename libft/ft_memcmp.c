@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/09 13:14:41 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 20:46:08 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/14 09:13:08 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ///							2)	perform search by comparison on each byte in
 ///								the range by moving the pointers and return
 ///								occurance of differences c as the difference
-///							3)	return NULL if nothing was found
+///							3)	return 0 if nothing was found
 /// @param s1 				memory comparison reference
 /// @param s2 				memory to be compared
 /// @param n 				range size to be compared
