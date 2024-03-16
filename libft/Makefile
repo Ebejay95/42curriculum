@@ -6,7 +6,7 @@
 #    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 11:02:33 by jeberle           #+#    #+#              #
-#    Updated: 2024/03/14 11:03:25 by jeberle          ###   ########.fr        #
+#    Updated: 2024/03/15 09:44:28 by jeberle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,16 +21,18 @@ OBJECTS=$(CFILES:.c=.o)
 BONUSOBJECTS=$(BONUSFILES:.c=.o)
 DEPFILES=libft.h
 
+.PHONY:	all clean fclean re bonus
+
 all: $(NAME)
 
 $(NAME): $(OBJECTS)
-	ar crs $(NAME) $(OBJECTS)
+	ar rs $(NAME) $(OBJECTS)
 
 %.o:%.c
 	$(CC) $(CFLAGS) -c -o $@ $^
 
 bonus: $(BONUSOBJECTS)
-	ar crs $(NAME) $(BONUSOBJECTS)
+	ar rs $(NAME) $(BONUSOBJECTS)
 
 clean:
 	rm -rf $(OBJECTS) $(BONUSOBJECTS)

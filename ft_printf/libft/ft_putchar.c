@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 10:32:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/16 15:52:26 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/12 21:16:54 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/15 17:30:16 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-// USE A F****** PRINT BASE FUNCTION MODIFY PUTSTR
-
-void	ft_printf(const char *text, ...)
+/// @brief		write a char to the desired file descriptor
+/// @param c 	the char to write
+/// @param fd 	the file descriptor
+///				0	stdin 	do not use!
+///				1	stdout	to console
+///				2	stderr	to error log
+///				2<	to file in writing status
+void	ft_putchar(char c)
 {
-	va_list		args;
-	t_pf_arg	**args_array;
-
-	va_start(args, text);
-	args_array = lex(text, args);
-	// put_strendl(genstring(args_array));
-	va_end(args);
-}
-
-int	main ()
-{
-	//ft_printf("Teste sich %X wer kann!", 42);
-	ft_putstr(strbase());
-	return (0);
+	write(1, &c, 1);
 }
