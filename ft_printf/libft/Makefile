@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
+#    By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 11:02:33 by jeberle           #+#    #+#              #
-#    Updated: 2024/03/16 15:54:02 by jeberle          ###   ########.fr        #
+#    Updated: 2024/03/18 21:14:57 by jonathanebe      ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,9 +41,11 @@ ft_strlen.c \
 ft_strrchr.c \
 ft_tolower.c \
 ft_toupper.c \
+ft_str_is_unique.c \
 ft_strncmp.c \
 ft_strnstr.c \
 ft_split.c \
+ft_strrev.c \
 ft_putchar.c \
 ft_putstr.c \
 ft_putendl.c \
