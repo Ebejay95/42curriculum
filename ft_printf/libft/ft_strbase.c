@@ -3,23 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:53:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/18 21:47:40 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/20 10:14:09 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*check_base(char *base)
+static int	check_base(char *base)
 {
-	char	*default_base;
-
-	default_base = "0123456789";
 	if (ft_strlen(base) < 2 || !ft_str_is_unique(base))
-		return (default_base);
-	return (base);
+		return (0);
+	return (1);
 }
 
 static size_t	get_res_len(long int input, size_t base_len)
@@ -49,7 +46,8 @@ char	*ft_strbase(long long int input, char *base)
 	size_t			base_len;
 	long long		input_work;
 
-	base = check_base(base);
+	if(!check_base(base))
+		return (NULL);
 	base_len = ft_strlen(base);
 	len = get_res_len(input, base_len) + 1;
 	if (0 > input)

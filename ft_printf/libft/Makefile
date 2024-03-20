@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+         #
+#    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 11:02:33 by jeberle           #+#    #+#              #
-#    Updated: 2024/03/18 21:14:57 by jonathanebe      ###   ########.fr        #
+#    Updated: 2024/03/20 07:58:25 by jeberle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,6 +43,7 @@ ft_tolower.c \
 ft_toupper.c \
 ft_str_is_unique.c \
 ft_strncmp.c \
+ft_strstr.c \
 ft_strnstr.c \
 ft_split.c \
 ft_strrev.c \
@@ -55,7 +56,8 @@ ft_putstr_fd.c \
 ft_putendl_fd.c \
 ft_putnbr_fd.c \
 ft_strmapi.c \
-ft_striteri.c
+ft_striteri.c \
+ft_strreplace.c
 BONUSFILES=  ft_lstnew.c \
 ft_lstadd_front.c \
 ft_lstsize.c \

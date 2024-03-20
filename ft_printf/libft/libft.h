@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:38:35 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/18 21:13:46 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/20 07:58:14 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,7 @@ void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 int		ft_str_is_unique(char* str);
 char	*ft_strrev(const char *s1);
+char	*ft_strreplace(char *h, char *n, char *r);
+char	*ft_strreplaceall(char *h, char *n, char *r);
+char	*ft_strstr(const char *hayst, const char *needle);
 #endif

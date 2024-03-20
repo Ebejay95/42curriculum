@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:36:21 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/16 12:25:41 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/20 09:53:14 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ t_pf_arg	**args_build(t_pf_arg	**arg_array, const char *text, va_list args)
 		{
 			if(filter_not_defined_arg_types(text[idx + 1]))
 			{
-				new_arg = create_arg(text[idx + 1], idx, args);
+				new_arg = create_arg(text[idx + 1], args);
 				if (new_arg == NULL)
 				{
 					return (free_args(arg_idx, arg_array));
@@ -72,13 +72,12 @@ t_pf_arg	**args_build(t_pf_arg	**arg_array, const char *text, va_list args)
 	return (arg_array);
 }
 
-t_pf_arg	**lex(const char *text, va_list args)
+t_pf_arg	**lex(const char *text, va_list args, size_t *args_len)
 {
 	t_pf_arg	**arg_array;
-	size_t	args_len;
 
-	args_len = get_args_len(text);
-	arg_array = ft_calloc(args_len, sizeof(t_pf_arg));
+	*args_len = get_args_len(text);
+	arg_array = ft_calloc(*args_len, sizeof(t_pf_arg));
 	if (arg_array != NULL)
 	{
 		arg_array = args_build(arg_array, text, args);

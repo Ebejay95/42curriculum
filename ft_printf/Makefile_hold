@@ -6,7 +6,7 @@
 #    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 11:02:58 by jeberle           #+#    #+#              #
-#    Updated: 2024/03/15 15:13:51 by jeberle          ###   ########.fr        #
+#    Updated: 2024/03/20 10:03:25 by jeberle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,11 +31,11 @@ LIBDIR=libft
 LIBS= -L $(LIBDIR) -lft
 
 CODEDIRS=.
-CFILES= ft_printf.c
+CFILES=ft_printf.c ft_lexer.c ft_parser.c ft_exec.c
 
-BONUSFILES=
+# BONUSFILES=
 OBJECTS=$(CFILES:.c=.o)
-BONUSOBJECTS=$(BONUSFILES:.c=.o)
+# BONUSOBJECTS=$(BONUSFILES:.c=.o)
 DEPS=$(CFILES:.c=.d)
 
 .PHONY:	all clean fclean re bonus
@@ -55,16 +55,17 @@ $(NAME): $(OBJECTS)
 	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
 	@echo "${GREEN}SUCCESS: objects compiled ${NC}"
 
-bonus: $(BONUSOBJECTS)
-	ar crs $(NAME) $(BONUSOBJECTS)
-	@echo "${GREEN}SUCCESS: bonus compiled ${NC}"
+# bonus: $(BONUSOBJECTS)
+# 	ar crs $(NAME) $(BONUSOBJECTS)
+# 	@echo "${GREEN}SUCCESS: bonus compiled ${NC}"
 
 libft:
 	$(MAKE) -C $(LIBDIR)
 	@echo "${GREEN}SUCCESS: ${LIBDIR} compiled ${NC}"
 
 clean:
-	rm -rf $(OBJECTS) $(BONUSOBJECTS) $(DEPS) >/dev/null 2>&1
+	rm -rf $(OBJECTS) $(DEPS) >/dev/null 2>&1
+#	rm -rf $(OBJECTS) $(BONUSOBJECTS) $(DEPS) >/dev/null 2>&1
 	$(MAKE) -C $(LIBDIR) clean
 	@echo "${GREEN}SUCCESS: clean ${NC}"
 

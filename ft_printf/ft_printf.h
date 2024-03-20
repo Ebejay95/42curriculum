@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 11:08:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/16 15:28:30 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/20 10:19:29 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef enum {
 	PERCENT,
 	INVALID
 } e_type;
+#define INT_UNSET_VALUE -1
+#define UINT_UNSET_VALUE 4294967295U
 
 typedef struct s_flex_type
 {
@@ -53,14 +55,14 @@ typedef struct s_flex_type
 typedef struct s_pf_arg
 {
 	e_type		type;
-	size_t		position;
 	t_flex_type	value;
-	size_t		len;
 	char		*printable;
+	char		*needle;
 } t_pf_arg;
 
 void		ft_printf(const char *text, ...);
-t_pf_arg	**lex(const char *text, va_list args);
-t_pf_arg	*create_arg(const char typechr, size_t pos, va_list args);
+t_pf_arg	**lex(const char *text, va_list args, size_t *args_len);
+t_pf_arg	*create_arg(const char typechr, va_list args);
 void		*free_args(size_t idx, t_pf_arg **args);
 char		*get_pr_by_val(t_flex_type *value);
+char	*genstring(const char *text, t_pf_arg **args_array, size_t args_len);

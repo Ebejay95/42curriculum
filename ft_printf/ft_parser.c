@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 11:14:10 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/16 15:28:14 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/20 10:20:11 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,26 @@ void	*free_args(size_t idx, t_pf_arg **args)
 	return (NULL);
 }
 
+t_flex_type *set_val_defaults(t_flex_type *value)
+{
+	value->c = INT_UNSET_VALUE;
+	value->s = NULL;
+	value->p = NULL;
+	value->d = INT_UNSET_VALUE;
+	value->i = INT_UNSET_VALUE;
+	value->u = UINT_UNSET_VALUE;
+	value->x = UINT_UNSET_VALUE;
+	value->X = UINT_UNSET_VALUE;
+	value->percent = INT_UNSET_VALUE;
+	return (value);
+}
+
 void	*get_val_by_va_arg(e_type type, va_list args)
 {
 	t_flex_type *value;
 	value = ft_calloc(1, sizeof(t_flex_type));
+	if(value != NULL)
+		value = set_val_defaults(value);
 	if (type == CHAR && value != NULL)
 		value->c = va_arg(args, int);
 	else if(type == STRING && value != NULL)
@@ -74,29 +90,24 @@ void	*get_val_by_va_arg(e_type type, va_list args)
 }
 
 
-t_pf_arg	*create_arg(const char typechr, size_t pos, va_list args)
+t_pf_arg	*create_arg(const char typechr, va_list args)
 {
 	t_pf_arg		*new;
 	e_type			type;
 	t_flex_type		*value;
 	char			*printable;
-	
+	char			*needle;
+
+	needle = ft_calloc(2, sizeof(char));
+	if(needle)
+		*needle = typechr;
 	type = get_e_by_chr(typechr);
 	value = get_val_by_va_arg(type, args);
 	new = ft_calloc(1, sizeof(t_pf_arg));
 	printable = get_pr_by_val(value);
-	if (new == NULL || value == NULL || printable == NULL)
-	{
-		if(printable != NULL)
-			free(printable);
-		if(value != NULL)
-			free(value);
-		return (NULL);
-	}
 	new->type = type;
-	new->position = pos;
-	new->len = 0;
 	new->value = *value;
-	new->printable = NULL;
+	new->printable = printable;
+	new->needle = ft_strjoin("%", needle);
 	return (new);
 }
