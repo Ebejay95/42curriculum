@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 07:57:43 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:38 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/07 08:14:48 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/14 09:15:09 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *hayst, const char *needle)
+/// @brief		get the length of a string
+///	@algorithm	decplare an int counter and iterate to the termination of the
+///				string str while counting each iteration. return the counter
+/// @param str 	string that length shall be returned
+/// @return len	length of string
+size_t	ft_strlen(const char *str)
 {
-	size_t	n;
-	size_t	h;
+	size_t	len;
 
-	h = 0;
-	if (needle[0] == '\0')
-		return ((char *)hayst);
-	while (hayst[h] != '\0')
+	len = 0;
+	while (*str != '\0')
 	{
-		n = 0;
-		while (needle[n] != '\0' && needle[n] == hayst[h + n])
-		{
-			n++;
-			if (needle[n] == '\0')
-				return ((char *)(&hayst[h]));
-		}
-		h++;
+		len++;
+		str++;
 	}
-	return (NULL);
+	return (len);
 }

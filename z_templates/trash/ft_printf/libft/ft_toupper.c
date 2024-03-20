@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 11:08:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 18:38:14 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/07 15:51:51 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/13 17:59:19 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
+#include "libft.h"
 
-#define INT_UNSET_VALUE -1
-#define UINT_UNSET_VALUE 4294967295U
-
-
-
-int					ft_printf(const char *text, ...);
+/// @brief		check a char represented by an int to be lowercase and perform
+///				transformation to uppercase on it
+/// @algorithm	check the char by ascii range a - z and modify by subtracting 32
+/// @param c	char represented by an int to check
+/// @return		uppercase char represented by an int
+int	ft_toupper(int c)
+{
+	if (c >= 'a' && c <= 'z')
+		return (c - 32);
+	return (c);
+}

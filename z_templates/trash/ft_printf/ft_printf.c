@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:32:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 18:54:17 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/20 18:28:27 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,81 +14,32 @@
 #include <limits.h>
 #include <stdio.h>
 
-static int	filter_not_defined_arg_types(int tc)
-{
-	if(tc == 99 || tc == 115 || tc == 112 || tc == 100 || tc == 105)
-		return (1);
-	if(tc == 117 || tc == 120 || tc == 88 || tc == 37)
-		return (1);
-	return (0);
-}
-
-int	smart_print(char type, va_list args)
-{
-	if (type == 'c')
-	{
-		ft_putchar(va_arg(args, int));
-	}
-	else if (type == 's')
-	{
-		ft_putchar('s');
-	}
-	else if (type == 'p')
-	{
-		ft_putchar('p');
-	}
-	else if (type == 'd')
-	{
-		ft_putchar('d');
-	}
-	else if (type == 'i')
-	{
-		ft_putchar('i');
-	}
-	else if (type == 'u')
-	{
-		ft_putchar('u');
-	}
-	else if (type == 'x')
-	{
-		ft_putchar('x');
-	}
-	else if (type == 'X')
-	{
-		ft_putchar('X');
-	}
-	else if (type == '%')
-	{
-		ft_putchar('%');
-	}
-	return (0);
-}
 
 int	ft_printf(const char *text, ...)
 {
 	va_list		args;
-	size_t		idx;
+	t_pf_arg	**args_array;
+	size_t		args_len;
+	char		*pr;
 	int			pr_len;
 
-	idx = 0;
-	pr_len = 0;
+	args_len = 0;
 	va_start(args, text);
-	ft_putendl("##################################################");
+	ft_putendl("###############################");
 	ft_putendl((char *)text);
-	while(text[idx] != '\0')
+	args_array = lex(text, args, &args_len);
+	if (args_array != NULL)
 	{
-		if(text[idx] == 37 && text[idx + 1] != '\0')
-		{
-			ft_putchar('%');
-			if(filter_not_defined_arg_types(text[idx + 1]))
-			{
-				pr_len = smart_print(text[idx + 1], args) + pr_len;
-				ft_putchar(text[idx + 1]);
-				ft_putchar('\n');
-			}
-		}
-		idx++;
-		pr_len++;
+		pr = genstring(text, args_array, args_len);
+		ft_putendl("__________________________________");
+		ft_putendl(pr);
+		pr_len = (int)ft_strlen(pr);
+		if (pr != NULL)
+			free(pr);
+		if (args_array != NULL)
+			free_args(args_len, args_array);
+		va_end(args);
+		return (pr_len);
 	}
 	va_end(args);
 	return (0);
@@ -97,6 +48,7 @@ int main(void)
 {
     // c_tests
     ft_printf("c Test 1: %c\n", '0');
+    printf("c Test 1: %c\n", '0');
     ft_printf("c Test 2:  %c \n", '0');
     ft_printf("c Test 3:  %c\n", '0' - 256);
     ft_printf("c Test 4: %c \n", '0' + 256);

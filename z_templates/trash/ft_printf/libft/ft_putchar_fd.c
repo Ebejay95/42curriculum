@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 11:08:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 18:38:14 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/12 21:16:54 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/13 21:17:59 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
-#include <stdlib.h>
+#include "libft.h"
 
-#define INT_UNSET_VALUE -1
-#define UINT_UNSET_VALUE 4294967295U
-
-
-
-int					ft_printf(const char *text, ...);
+/// @brief		write a char to the desired file descriptor
+/// @param c 	the char to write
+/// @param fd 	the file descriptor
+///				0	stdin 	do not use!
+///				1	stdout	to console
+///				2	stderr	to error log
+///				2<	to file in writing status
+void	ft_putchar_fd(char c, int fd)
+{
+	write(fd, &c, 1);
+}

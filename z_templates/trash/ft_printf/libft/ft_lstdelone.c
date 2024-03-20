@@ -1,35 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 07:57:43 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:38 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/13 12:56:36 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/13 19:39:55 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *hayst, const char *needle)
+/// @brief 		delete a node of a linked list
+/// @algorithm	1)	check the existence of lst and del
+///				2)	delete node with the deletion callback for its content
+///					and the free'ing of the associating pointer
+/// @param lst	the linked list
+/// @param del	the content deletion callback function
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	size_t	n;
-	size_t	h;
-
-	h = 0;
-	if (needle[0] == '\0')
-		return ((char *)hayst);
-	while (hayst[h] != '\0')
-	{
-		n = 0;
-		while (needle[n] != '\0' && needle[n] == hayst[h + n])
-		{
-			n++;
-			if (needle[n] == '\0')
-				return ((char *)(&hayst[h]));
-		}
-		h++;
-	}
-	return (NULL);
+	if (lst == NULL || del == NULL)
+		return ;
+	del(lst->content);
+	free(lst);
 }

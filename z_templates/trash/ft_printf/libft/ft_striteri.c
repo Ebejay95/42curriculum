@@ -1,35 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_striteri.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/20 07:57:43 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:38 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/12 23:55:36 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/14 07:59:57 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strstr(const char *hayst, const char *needle)
+/// @brief		apply a function on each char in a string
+///	@algorithm	1)	declare index and check s and f are set
+///				2)	apply f on each pointer value in while
+/// @param s 	the string to manipulate
+/// @param f	the function to manipulate used as callback
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-	size_t	n;
-	size_t	h;
+	int		i;
 
-	h = 0;
-	if (needle[0] == '\0')
-		return ((char *)hayst);
-	while (hayst[h] != '\0')
+	i = 0;
+	if (s == NULL || f == NULL)
+		return ;
+	while (s[i] != '\0')
 	{
-		n = 0;
-		while (needle[n] != '\0' && needle[n] == hayst[h + n])
-		{
-			n++;
-			if (needle[n] == '\0')
-				return ((char *)(&hayst[h]));
-		}
-		h++;
+		f(i, &s[i]);
+		i++;
 	}
-	return (NULL);
 }
