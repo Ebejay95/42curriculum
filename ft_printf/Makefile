@@ -20,11 +20,12 @@ LIBFT_OBJS = $(LIBFT_SRC:.c=.o)
 INCLUDES = -I $(LIBFT_SRC)
 all: $(NAME)
 $(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_SRC)
-	cp ./libft/libft.a ./libftprintf.a
-	ar rcs $(NAME) $(OBJS)
+	$(MAKE) -C $(LIBFT_SRC) bonus
+	ar rcs $(NAME) $(OBJS) $(LIBFT_SRC)/*.o
 %.o: %.c
 	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+test: $(NAME)
+	$(CC) $(CFLAGS) $(INCLUDES) $(NAME) main.c -o test
 clean:
 	rm -rf $(OBJS)
 	$(MAKE) -C $(LIBFT_SRC) clean

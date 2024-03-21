@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/08 15:38:35 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 10:42:57 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/21 11:30:41 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	*ft_memcpy(void *trg, const void *src, size_t size);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memmove(void *trg, const void *src, size_t size);
 void	*ft_memset(void *start, int fill, size_t size);
-char	*ft_strbase(long long int input, char *base);
+char	*ft_strbase(unsigned long long input, const char *base);
 char	*ft_strchr(const char *src, int c);
 size_t	ft_strlcat(char *trg, const char *src, size_t size);
 size_t	ft_strlcpy(char *trg, const char *src, size_t size);
@@ -58,6 +58,8 @@ void	ft_putchar(char c);
 void	ft_putstr(char *s);
 void	ft_putendl(char *s);
 void	ft_putnbr(int n);
+int		ft_putnbrr(int n);
+int		ft_putunbrr(unsigned int n);
 char	*ft_itoa(int n);
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));
 char	*ft_strmapi(char const *s, char (*f)(unsigned int, char));

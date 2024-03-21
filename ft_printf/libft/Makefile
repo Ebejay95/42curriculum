@@ -6,7 +6,7 @@
 #    By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/03/14 11:02:33 by jeberle           #+#    #+#              #
-#    Updated: 2024/03/20 07:58:25 by jeberle          ###   ########.fr        #
+#    Updated: 2024/03/21 11:26:57 by jeberle          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,6 +51,8 @@ ft_putchar.c \
 ft_putstr.c \
 ft_putendl.c \
 ft_putnbr.c \
+ft_putnbrr.c \
+ft_putunbrr.c \
 ft_putchar_fd.c \
 ft_putstr_fd.c \
 ft_putendl_fd.c \

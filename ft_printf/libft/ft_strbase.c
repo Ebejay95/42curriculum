@@ -3,77 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:53:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/20 22:06:18 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/21 11:47:06 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	check_base(char *base)
+static int	check_base(const char *base)
 {
-	if (ft_strlen(base) < 2 || !ft_str_is_unique(base))
+	if (base == NULL)
+		return (0);
+	if (ft_strlen(base) < 2 || !ft_str_is_unique((char *)base))
 		return (0);
 	return (1);
 }
 
-static size_t	get_res_len(long int input, size_t base_len)
+static int	get_res_len(unsigned long long input, const char *base)
 {
-    size_t	len;
+	int	length;
 
-	len = 0;
-    if (input <= 0)
-    {
-        len = 1;
-    }
-    while (input != 0)
-    {
-        len++;
-        input /= base_len;
-    }
-    return len;
+	length = 1;
+	while (input != 0)
+	{
+		input = input / ft_strlen(base);
+		length++;
+	}
+	return (length);
 }
 
-char	*build_base_str(long long int i, char *b, size_t l)
-{
-	char			*res;
-	size_t			index;
-	long long int	n;
 
-	res = ft_calloc(l + 1, sizeof(char));
-	if (res == NULL)
+char	*ft_strbase(unsigned long long input, const char *base)
+{
+	char	*res;
+	int		len;
+	size_t	base_len;
+
+	if(!check_base(base))
 		return (NULL);
-	if (i == 0)
+	base_len = ft_strlen(base);
+	len = get_res_len(input, base);
+	res = ft_calloc(len+ 1, sizeof(char));
+	if(res == NULL)
+		return (NULL);
+	res[len] = '\0';
+	len--;
+	if(input == 0)
 	{
-		res[0] = b[0];
+		res[0] = base[0];
 		return (res);
 	}
-	index = l - 1;
-	if (i < 0)
-		n = -i;
-	else
-		n = i;
-	while (n != 0)
+	while (len > 0)
 	{
-		res[index] = b[n % ft_strlen(b)];
-		n = n / ft_strlen(b);
-		index--;
+		len--;
+		res[len] = base[input % ft_strlen(base)];
+		input = input / ft_strlen(base);
 	}
-	if (i < 0 && ft_strlen(b) == 10)
-    {
-        res[index] = '-';
-    }
 	return (res);
-}
-
-char	*ft_strbase(long long int input, char *base)
-{
-	size_t			len;
-
-	if (!check_base(base))
-		return (NULL);
-	len = get_res_len(input, ft_strlen(base));
-	return (build_base_str(input, base, len));
 }

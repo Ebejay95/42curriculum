@@ -1,19 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.h                                        :+:      :+:    :+:   */
+/*   ft_putnbrr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/14 11:08:34 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 11:51:36 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/21 11:10:22 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/21 11:14:42 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft/libft.h"
-#include <stdarg.h>
+#include "libft.h"
 
-#define INT_UNSET_VALUE -1
-#define UINT_UNSET_VALUE 4294967295U
+int	ft_putnbrr(int n)
+{
+	char	nbr;
+	int		r;
 
-int					ft_printf(const char *text, ...);
+	r = 0;
+	if (n == -2147483648)
+	{
+		r += write(1, "-2", 2);
+		n = 147483648;
+	}
+	if (n < 0)
+	{
+		n = n * (-1);
+		r += write(1, "-", 1);
+	}
+	nbr = (n % 10) + '0';
+	n = n / 10;
+	if (n > 0)
+		r += ft_putnbrr(n);
+	r += write(1, &nbr, 1);
+	return (r);
+}
