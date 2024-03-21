@@ -1,0 +1,34 @@
+NAME=bin
+CC=cc
+CFLAGS=-Wall -Wextra -Werror
+CODEDIRS=.
+CFILES=ft_printf.c \
+ft_putnbrr.c \
+ft_putunbrr.c \
+ft_itoa.c \
+ft_calloc.c \
+ft_strlen.c \
+ft_strdup.c \
+ft_memset.c \
+ft_strlcpy.c \
+ft_strbase.c \
+ft_putchar.c \
+ft_putstr.c \
+ft_str_is_unique.c
+OBJECTS=$(CFILES:.c=.o)
+BONUSOBJECTS=$(BONUSFILES:.c=.o)
+DEPS=$(CFILES:.c=.d)
+.PHONY: all clean fclean re bonus
+all: $(NAME)
+$(NAME): $(OBJECTS)
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJECTS)
+%.o:%.c
+	$(CC) $(CFLAGS) $(DEPFLAGS) -c -o $@ $<
+bonus: $(BONUSOBJECTS)
+	$(CC) $(CFLAGS) -o $(NAME) $(BONUSOBJECTS)
+clean:
+	rm -rf $(OBJECTS) $(BONUSOBJECTS) $(DEPS)
+fclean: clean
+	rm -rf $(NAME)
+re: fclean all
+-include $(DEPS)

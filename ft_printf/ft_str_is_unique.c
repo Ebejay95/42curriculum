@@ -1,25 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_str_is_unique.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 11:06:07 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 18:13:43 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/17 08:27:42 by jonathanebe       #+#    #+#             */
+/*   Updated: 2024/03/21 14:49:56 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
-/// @brief		check a char represented by an int to be 32 - 126 defined as
-///				printable
-/// @algorithm	check the char by ascii range 32 - 126
-/// @param c	char represented by an int to check
-/// @return		int 1 || 0
-int	ft_isprint(int c)
+int	ft_str_is_unique(char *str)
 {
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+	size_t	len;
+	size_t	i;
+	size_t	j;
+
+	len = ft_strlen(str);
+	i = 0;
+	while (i < len)
+	{
+		j = i + 1;
+		while (j < len)
+		{
+			if (str[i] == str[j])
+			{
+				return (0);
+			}
+			j++;
+		}
+		i++;
+	}
+	return (1);
 }

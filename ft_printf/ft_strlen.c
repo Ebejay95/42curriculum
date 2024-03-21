@@ -1,34 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/13 11:55:50 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 20:17:19 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/07 08:14:48 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/21 14:49:32 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
-/// @brief			get the length of a linked list
-/// @algorithm		1)	initialize len as 0
-///					2)	while the node in the list is not NULL so
-///						the end of the lst has not been reached it will be moved
-///						to each node and count the moves in len
-///					3)	return len
-/// @param lst		the linked list
-/// @return len		the length of lst
-int	ft_lstsize(t_list *lst)
+/// @brief		get the length of a string
+///	@algorithm	decplare an int counter and iterate to the termination of the
+///				string str while counting each iteration. return the counter
+/// @param str 	string that length shall be returned
+/// @return len	length of string
+size_t	ft_strlen(const char *str)
 {
-	int	len;
+	size_t	len;
 
 	len = 0;
-	while (lst != NULL)
+	while (*str != '\0')
 	{
-		lst = lst->next;
 		len++;
+		str++;
 	}
 	return (len);
 }

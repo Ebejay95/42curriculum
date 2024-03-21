@@ -6,11 +6,11 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 19:30:41 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 07:55:03 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:50:01 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
 /// @brief					copy a string to a new location
 ///	@algorithm				1)	declare a new char pointer for the result

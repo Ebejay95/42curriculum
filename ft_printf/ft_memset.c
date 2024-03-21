@@ -6,11 +6,11 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 08:58:10 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/13 21:12:30 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:49:41 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
 /// @brief 			set a range of memory to a value by poointer and size 
 ///	@algorithm		set a working buffer to not loose the pointer to memory

@@ -10,27 +10,38 @@
 #																			  #
 # **************************************************************************** #
 
-CC = cc
-CFLAGS = -Wall -Werror -Wextra
-NAME = libftprintf.a
-SRCS = ft_printf.c
-OBJS = $(SRCS:.c=.o)
-LIBFT_SRC = ./libft
-LIBFT_OBJS = $(LIBFT_SRC:.c=.o)
-INCLUDES = -I $(LIBFT_SRC)
+NAME=libftprintf.a
+CC=cc
+CFLAGS= -Wall -Wextra -Werror
+CFILES= ft_printf.c \
+./ft_putnbrr.c \
+./ft_putunbrr.c \
+./ft_itoa.c \
+./ft_calloc.c \
+./ft_strlen.c \
+./ft_strdup.c \
+./ft_memset.c \
+./ft_strlcpy.c \
+./ft_strbase.c \
+./ft_putchar.c \
+./ft_putstr.c \
+./ft_str_is_unique.c
+OBJECTS=$(CFILES:.c=.o)
+
+.PHONY:	all clean fclean re
+
 all: $(NAME)
-$(NAME): $(OBJS)
-	$(MAKE) -C $(LIBFT_SRC) bonus
-	ar rcs $(NAME) $(OBJS) $(LIBFT_SRC)/*.o
-%.o: %.c
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
-test: $(NAME)
-	$(CC) $(CFLAGS) $(INCLUDES) $(NAME) main.c -o test
+
+$(NAME): $(OBJECTS)
+	ar rs $(NAME) $(OBJECTS)
+
+%.o:%.c
+	$(CC) $(CFLAGS) -c -o $@ $^
+
 clean:
-	rm -rf $(OBJS)
-	$(MAKE) -C $(LIBFT_SRC) clean
+	rm -rf $(OBJECTS)
+
 fclean: clean
-	rm -rf $(NAME) test
-	$(MAKE) -C $(LIBFT_SRC) fclean
+	rm -rf $(NAME)
+
 re: fclean all
-.PHONY: all clean fclean re

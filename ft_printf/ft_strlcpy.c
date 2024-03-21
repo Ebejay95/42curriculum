@@ -6,11 +6,11 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 18:31:11 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 15:20:25 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/21 14:50:03 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
 /// @brief 					copy string range by two char pointer and size
 /// @algorithm				1)	check the existance of trg

@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalpha.c                                       :+:      :+:    :+:   */
+/*   ft_putchar.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/03/05 08:21:13 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/14 18:13:14 by jeberle          ###   ########.fr       */
+/*   Created: 2024/03/12 21:16:54 by jeberle           #+#    #+#             */
+/*   Updated: 2024/03/21 14:49:45 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "./ft_printf.h"
 
-/// @brief		check a char represented by an int to either A - Z, a - z
-/// @algorithm	check the char by ascii ranges A - Z || a - z
-/// @param c	char represented by an int to check
-/// @return		int 1 || 0
-int	ft_isalpha(int c)
+/// @brief		write a char to the desired file descriptor
+/// @param c 	the char to write
+/// @param fd 	the file descriptor
+///				0	stdin 	do not use!
+///				1	stdout	to console
+///				2	stderr	to error log
+///				2<	to file in writing status
+void	ft_putchar(char c)
 {
-	if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
-		return (1);
-	return (0);
+	write(1, &c, 1);
 }
