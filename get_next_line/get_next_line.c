@@ -6,63 +6,67 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:17 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 18:10:58 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 22:51:35 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*get_line_content(void *buffer, int sizer, int *line_c)
-{
-	char	*res;
-	char	*bufferchar;
-	int		strlen;
-	int		i;
-	int		linestart;
+ char	*get_line_content(void *buffer, int sizer)
+ {
+ 	char	*res;
+ 	char	*bufferchar;
+ 	int		strlen;
+ 	int		i;
+ 	int		linestart;
 
-	linestart = *line_c;
-	if(*line_c)
-		linestart++;
-	strlen = 0;
-	bufferchar = (char *)buffer;
-	while (bufferchar[strlen] != '\0' && bufferchar[strlen] != '\n' && strlen < sizer)
-	{
-		strlen++;
-	}
-	res = malloc((strlen + 1) * sizeof(char));
-	if(res == NULL)
-		return (NULL);
-	i = 0;
-	while (i < strlen)
-	{
-		res[i] = bufferchar[linestart + i];
-		i++;
-	}
-	res[i] = '\0';
-	*line_c = *line_c + strlen + 1;
-	return (res);
+ 	if(*line_c)
+ 		linestart++;
+ 	strlen = 0;
+ 	bufferchar = (char *)buffer;
+ 	while (bufferchar[strlen] != '\0' && bufferchar[strlen] != '\n' && strlen < sizer)
+ 	{
+ 		strlen++;
+ 	}
+ 	res = malloc((strlen + 1) * sizeof(char));
+ 	if(res == NULL)
+ 		return (NULL);
+ 	i = 0;
+ 	while (i < strlen)
+ 	{
+ 		res[i] = bufferchar[linestart + i];
+ 		i++;
+ 	}
+ 	res[i] = '\0';
+ 	return (res);
 }
 
-char *get_next_line(int fd)
+char *get_next_line_walk(int fd, size_t size)
 {
-	static int	line_c;
-	void		*buffer;
+	char		*buffer;
 	char		*res;
-	int			sizer;
-	int			proof;
+	size_t		proof;
 
-	line_c = 0;
-	sizer = 999;
-	buffer = malloc(sizeof(char) * sizer);
+	size = size + BUFFERUNIT;
+	buffer = malloc(sizeof(char) * size);
 	if (buffer == NULL)
 		return (NULL);
-	proof = read(fd, buffer, sizer);
-	if(proof == -1)
+	proof = read(fd, buffer, size);
+	if(proof < 0)
 	{
 		free(buffer);
 		return (NULL);
 	}
-	res = get_line_content(buffer, sizer, &line_c);
+	buffer[proof] = '\0'
+
+// Füge den neuen Inhalt zu accumulated hinzu.
+	// Suche nach einem Zeilenumbruch in accumulated.
+	// Wenn ein Zeilenumbruch gefunden wird, teile accumulated und bereite für den nächsten Aufruf vor.
+	
 	free(buffer);
-	return (res);
+	// Wenn kein Zeilenumbruch gefunden wurde, rufe rekursiv get_next_line_walk erneut auf.
+}
+char *get_next_line(int fd)
+{
+	return (get_next_line_walk(fd, 0));
 }
