@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:53:03 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 14:49:39 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf.h"
+#include "./../ft_printf.h"
 
 /// @brief 			modify the params of ft_itoa
 ///	@algorithm		1)	declare a int to work with but not lose real int n

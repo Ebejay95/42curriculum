@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/07 08:14:48 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 14:49:32 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf.h"
+#include "./../ft_printf.h"
 
 /// @brief		get the length of a string
 ///	@algorithm	decplare an int counter and iterate to the termination of the

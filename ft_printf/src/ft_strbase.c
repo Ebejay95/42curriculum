@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:53:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 14:49:58 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf.h"
+#include "./../ft_printf.h"
 
 static int	check_base(const char *base)
 {
@@ -38,11 +38,9 @@ char	*ft_strbase(unsigned long long input, const char *base)
 {
 	char	*res;
 	int		len;
-	size_t	base_len;
 
 	if (!check_base(base))
 		return (NULL);
-	base_len = ft_strlen(base);
 	len = get_res_len(input, base);
 	res = ft_calloc(len + 1, sizeof(char));
 	if (res == NULL)

@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/11 19:30:41 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 14:50:01 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf.h"
+#include "./../ft_printf.h"
 
 /// @brief					copy a string to a new location
 ///	@algorithm				1)	declare a new char pointer for the result

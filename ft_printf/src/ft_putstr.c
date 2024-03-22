@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/12 21:19:52 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 14:49:51 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./ft_printf.h"
+#include "./../ft_printf.h"
 
 /// @brief		write a string to the desired file descriptor
 ///	@algorithm	iterate pointer over the string till null termination is reached
@@ -21,11 +21,13 @@
 ///				1	stdout	to console
 ///				2	stderr	to error log
 ///				2<	to file in writing status
-void	ft_putstr(char *s)
+int	ft_putstr(char *s)
 {
 	while (*s != '\0')
 	{
-		write(1, s, 1);
+		if (write(1, s, 1) < 0)
+			return (-1);
 		s++;
 	}
+	return (1);
 }

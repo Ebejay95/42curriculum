@@ -11,37 +11,46 @@
 # **************************************************************************** #
 
 NAME=libftprintf.a
-CC=cc
-CFLAGS= -Wall -Wextra -Werror
-CFILES= ft_printf.c \
-./ft_putnbrr.c \
-./ft_putunbrr.c \
-./ft_itoa.c \
-./ft_calloc.c \
-./ft_strlen.c \
-./ft_strdup.c \
-./ft_memset.c \
-./ft_strlcpy.c \
-./ft_strbase.c \
-./ft_putchar.c \
-./ft_putstr.c \
-./ft_str_is_unique.c
-OBJECTS=$(CFILES:.c=.o)
 
-.PHONY:	all clean fclean re
+CC=cc
+
+CFLAGS= -Wall -Wextra -Werror
+
+SRC=  ft_printf.c \
+./src/ft_putnbrr.c \
+./src/ft_putunbrr.c \
+./src/ft_itoa.c \
+./src/ft_calloc.c \
+./src/ft_isprint.c \
+./src/ft_strlen.c \
+./src/ft_strdup.c \
+./src/ft_memset.c \
+./src/ft_strlcpy.c \
+./src/ft_strbase.c \
+./src/ft_putchar.c \
+./src/ft_putstr.c \
+./src/ft_str_is_unique.c \
+./src/smart_prints_1.c \
+./src/smart_prints_2.c
+
+OBJS=$(SRC:.c=.o)
+
+RM=	rm -f
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS)
-	ar rs $(NAME) $(OBJECTS)
-
-%.o:%.c
-	$(CC) $(CFLAGS) -c -o $@ $^
+$(NAME) : $(OBJS)
+	ar rcs $(NAME) $(OBJS)
+	
+%.o : %.c
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJECTS)
+	$(RM) $(OBJS)
 
 fclean: clean
-	rm -rf $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
