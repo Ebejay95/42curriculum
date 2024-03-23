@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:30 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/23 19:02:46 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/23 19:53:39 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,5 @@ size_t	ft_strcpy(char *trg, const char *src);
 size_t	ft_strlen(const char *str);
 void	flush_frags(t_fragment **frag);
 void	free_processed_frag(t_fragment **frag, t_fragment *frag_work);
+void	free_frag(t_fragment **frag);
 #endif

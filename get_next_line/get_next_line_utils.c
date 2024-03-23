@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:29:55 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/23 19:45:21 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/23 19:55:44 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,11 +89,12 @@ void	create_line_frags(int fd, t_fragment	**frag)
 		read_range[read_state] = '\0';
 		new_frag = malloc(sizeof(t_fragment));
 		if (new_frag == NULL)
+		{
+			free(read_range);
 			return ;
+		}
 		new_frag->content = read_range;
 		new_frag->next = NULL;
-		if (new_frag == NULL)
-			return ;
 		add_frag(frag, new_frag);
 	}
 }
@@ -158,6 +159,21 @@ void	free_processed_frag(t_fragment **frag, t_fragment *frag_work)
 	if (*frag == NULL)
 		return ;
 	while (*frag != frag_work)
+	{
+		buffer = (*frag)->next;
+		free((*frag)->content);
+		free(*frag);
+		*frag = buffer;
+	}
+}
+
+void	free_frag(t_fragment **frag)
+{
+	t_fragment	*buffer;
+
+	if (*frag == NULL)
+		return ;
+	while (*frag != NULL)
 	{
 		buffer = (*frag)->next;
 		free((*frag)->content);
