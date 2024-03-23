@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:43:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/21 17:50:37 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/23 18:54:41 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	main (void)
 	char	*line;
 
 	fd = open("text.txt", O_RDONLY);
-	if(fd == -1)
+	if (fd == -1)
 	{
 		perror("Fehler beim Oeffnen der Datei");
 		exit(EXIT_FAILURE);
@@ -30,46 +30,103 @@ int	main (void)
 	// while ((line = get_next_line(fd)) != NULL)
 	// {
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("Gelesene Zeile: %s\n", line);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
+		free(line);
+		line = get_next_line(fd);
+		printf("R: %s\n\n", line);
 		free(line);
 	// }
 	if (close(fd) == -1)
