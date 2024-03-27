@@ -6,17 +6,11 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:17 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/27 15:31:11 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/27 15:36:26 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-
-int	is_readable(int fd)
-{
-	return (read(fd,NULL,0));
-}
 
 char *get_next_line(int fd)
 {
@@ -26,10 +20,8 @@ char *get_next_line(int fd)
 
 	line = NULL;
 	status = 1;
-	if (BUFFER_SIZE <= 0 || fd < 0 || is_readable(fd) != 0)
+	if (BUFFER_SIZE <= 0 || fd < 0)
 	{
-		if (is_readable(fd) != 0)
-			return (NULL);
 		return (NULL);	
 	}
 	workstring = build_workstring(fd, workstring, &status);
