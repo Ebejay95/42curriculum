@@ -3,20 +3,26 @@
 /*                                                        :::      ::::::::   */
 /*   smart_prints_2.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:27:49 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/03/22 16:50:19 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:09:09 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param i 
+/// @return 
 int	smart_print_u(unsigned int i)
 {
 	return (ft_putunbrr(i));
 }
 
+/// @brief 
+/// @param i 
+/// @return 
 int	smart_print_x(unsigned int i)
 {
 	char	*s;
@@ -35,6 +41,9 @@ int	smart_print_x(unsigned int i)
 	return (rl);
 }
 
+/// @brief 
+/// @param i 
+/// @return 
 int	smart_print_xup(unsigned int i)
 {
 	char	*s;
@@ -53,6 +62,10 @@ int	smart_print_xup(unsigned int i)
 	return (rl);
 }
 
+/// @brief 
+/// @param type 
+/// @param args 
+/// @return 
 int	smart_print(char type, va_list args)
 {
 	int	count;
@@ -79,6 +92,9 @@ int	smart_print(char type, va_list args)
 	return (count);
 }
 
+/// @brief 
+/// @param  
+/// @return 
 int	null_pointer(void)
 {
 	if (ft_putstr("0x0") < 0)

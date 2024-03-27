@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   smart_prints_1.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:27:32 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/03/22 16:49:05 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:08:45 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param c 
+/// @return 
 int	smart_print_c(int c)
 {
 	if (ft_putchar(c) < 0)
@@ -19,6 +22,9 @@ int	smart_print_c(int c)
 	return (1);
 }
 
+/// @brief 
+/// @param s 
+/// @return 
 int	smart_print_s(char *s)
 {
 	if (s == NULL)
@@ -32,6 +38,9 @@ int	smart_print_s(char *s)
 	return (ft_strlen(s));
 }
 
+/// @brief 
+/// @param p 
+/// @return 
 int	smart_print_p(void *p)
 {
 	unsigned long long int	ptr;
@@ -59,11 +68,17 @@ int	smart_print_p(void *p)
 	return (rl);
 }
 
+/// @brief 
+/// @param i 
+/// @return 
 int	smart_print_d(int i)
 {
 	return (ft_putnbrr(i));
 }
 
+/// @brief 
+/// @param i 
+/// @return 
 int	smart_print_i(int i)
 {
 	char	*s;

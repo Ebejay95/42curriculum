@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putunbrr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:19:51 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:06:56 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param n 
+/// @return 
 int	ft_putunbrr(unsigned int n)
 {
 	char	nbr;

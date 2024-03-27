@@ -3,15 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbrr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 11:10:22 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:06:49 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param n 
+/// @param r 
+/// @return 
 static int	casehandler(int *n, int *r)
 {
 	int	buf;
@@ -35,7 +39,11 @@ static int	casehandler(int *n, int *r)
 	return (0);
 }
 
-int	ft_putnbrr_rec(int n, int *r)
+/// @brief 
+/// @param n 
+/// @param r 
+/// @return 
+static int	ft_putnbrr_rec(int n, int *r)
 {
 	int	buf;
 
@@ -53,6 +61,9 @@ int	ft_putnbrr_rec(int n, int *r)
 	return (0);
 }
 
+/// @brief 
+/// @param n 
+/// @return 
 int	ft_putnbrr(int n)
 {
 	int	r;

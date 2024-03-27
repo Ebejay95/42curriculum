@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:32:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/22 20:30:17 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:09:41 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+/// @brief 
+/// @param tc 
+/// @return 
 static int	filter_not_defined_arg_types(int tc)
 {
 	if (tc == 99 || tc == 115 || tc == 112 || tc == 100 || tc == 105)
@@ -21,12 +24,19 @@ static int	filter_not_defined_arg_types(int tc)
 	return (0);
 }
 
+/// @brief 
+/// @param args 
+/// @return 
 int	ret_error(va_list args)
 {
 	va_end(args);
 	return (-1);
 }
 
+/// @brief 
+/// @param text 
+/// @param args 
+/// @return 
 int	formatted_print(const char *text, va_list args)
 {
 	int	prr;
@@ -41,6 +51,11 @@ int	formatted_print(const char *text, va_list args)
 	return (0);
 }
 
+/// @brief 
+/// @param text 
+/// @param args 
+/// @param idx 
+/// @return 
 static int	pr_loop(const char *text, va_list args, size_t *idx)
 {
 	int	prr;
@@ -62,6 +77,10 @@ static int	pr_loop(const char *text, va_list args, size_t *idx)
 	return (prr);
 }
 
+/// @brief 
+/// @param text 
+/// @param  
+/// @return 
 int	ft_printf(const char *text, ...)
 {
 	va_list		args;

@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_str_is_unique.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 08:27:42 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:07:01 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param str 
+/// @return 
 int	ft_str_is_unique(char *str)
 {
 	size_t	len;

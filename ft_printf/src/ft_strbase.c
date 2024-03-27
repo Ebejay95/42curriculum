@@ -3,15 +3,18 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strbase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/16 15:53:05 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/22 16:25:07 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 16:07:16 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
+/// @brief 
+/// @param base 
+/// @return 
 static int	check_base(const char *base)
 {
 	if (base == NULL)
@@ -21,6 +24,10 @@ static int	check_base(const char *base)
 	return (1);
 }
 
+/// @brief 
+/// @param input 
+/// @param base 
+/// @return 
 static int	get_res_len(unsigned long long input, const char *base)
 {
 	int	length;
@@ -34,6 +41,10 @@ static int	get_res_len(unsigned long long input, const char *base)
 	return (length);
 }
 
+/// @brief 
+/// @param input 
+/// @param base 
+/// @return 
 char	*ft_strbase(unsigned long long input, const char *base)
 {
 	char	*res;
