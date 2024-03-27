@@ -1,24 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:17 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/27 19:39:35 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/27 19:39:48 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 /// @brief 			return the (the next) line of a file to the request
-/// @algorithm		1)	define a static (for consectuive call) workstring for
-///						handling of the content read from the file
+/// @algorithm		1)	define a static (for consectuive call) workstring array
+///						for multiple different file descriptor calls in parallel
+///						handling of the content read from the fd's file
 ///						the line string to store the actual line and the 
 ///						range which serves as a buffer for the following logic
 ///						status will represent the state of reading
-///						(size EOF Error)
+///						(size EOF Error) OPEN_MAX of limits lib will parse the
+///						maximum ammount of files able to be opened by system
 ///					2)	initialize line with NULL and the status defaults to 1
 ///					3)	Check BUFFER_SIZE -D Variable and the fd or return
 ///					4)	build workstring will retreive the content of the file
@@ -37,7 +39,7 @@
 /// @return line	the line as a terminated string
 char	*get_next_line(int fd)
 {
-	static char	*workstring;
+	static char	*workstring[OPEN_MAX];
 	char		*line;
 	int			status;
 	char		range[BUFFER_SIZE + 1];
@@ -46,17 +48,17 @@ char	*get_next_line(int fd)
 	status = 1;
 	if (BUFFER_SIZE <= 0 || fd < 0)
 		return (NULL);
-	workstring = build_workstring(fd, workstring, &status, range);
-	if (workstring == NULL || status == -1)
-		return (smart_free(workstring, 1));
-	line = build_line(workstring);
+	workstring[fd] = build_workstring(fd, workstring[fd], &status, range);
+	if (workstring[fd] == NULL || status == -1)
+		return (smart_free(workstring[fd], 1));
+	line = build_line(workstring[fd]);
 	if (line == NULL)
 	{
-		free(workstring);
-		workstring = NULL;
+		free(workstring[fd]);
+		workstring[fd] = NULL;
 		return (NULL);
 	}
-	workstring = prep_next(workstring);
+	workstring[fd] = prep_next(workstring[fd]);
 	return (line);
 }
 

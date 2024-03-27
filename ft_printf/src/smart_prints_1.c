@@ -6,15 +6,15 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/22 16:27:32 by jonathanebe       #+#    #+#             */
-/*   Updated: 2024/03/27 16:08:45 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/27 21:48:31 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./../ft_printf.h"
 
-/// @brief 
-/// @param c 
-/// @return 
+/// @brief 		write a char to output and return write state
+/// @param c 	the char to be written
+/// @return 	the write state
 int	smart_print_c(int c)
 {
 	if (ft_putchar(c) < 0)
@@ -22,9 +22,10 @@ int	smart_print_c(int c)
 	return (1);
 }
 
-/// @brief 
-/// @param s 
-/// @return 
+/// @brief 		write a string to output and return write state
+///				and check fur NULL pointer - treat it as (null)
+/// @param s 	the string to be written
+/// @return 	the write state
 int	smart_print_s(char *s)
 {
 	if (s == NULL)
@@ -38,9 +39,11 @@ int	smart_print_s(char *s)
 	return (ft_strlen(s));
 }
 
-/// @brief 
-/// @param p 
-/// @return 
+/// @brief 		write a pointer to output and return write state
+///				add an 0x in the bginning and conv remains to
+///				lowercase hexa
+/// @param p 	the pointer to be written
+/// @return 	the write state
 int	smart_print_p(void *p)
 {
 	unsigned long long int	ptr;
@@ -68,17 +71,17 @@ int	smart_print_p(void *p)
 	return (rl);
 }
 
-/// @brief 
-/// @param i 
-/// @return 
+/// @brief 		write a decimal to output and return write state
+/// @param i 	the decimal to be written
+/// @return 	the write state
 int	smart_print_d(int i)
 {
 	return (ft_putnbrr(i));
 }
 
-/// @brief 
-/// @param i 
-/// @return 
+/// @brief 		write a int to output and return write state
+/// @param i 	the int to be written
+/// @return 	the write state
 int	smart_print_i(int i)
 {
 	char	*s;
