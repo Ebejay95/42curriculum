@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:43:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/23 18:54:41 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/24 17:58:07 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,6 @@ int	main (void)
 	}
 	// while ((line = get_next_line(fd)) != NULL)
 	// {
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
-		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
-		free(line);
 		line = get_next_line(fd);
 		printf("R: %s\n\n", line);
 		free(line);

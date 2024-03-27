@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:30 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/23 19:53:39 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/24 16:59:36 by jonathanebe      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,24 +21,15 @@
 #  define BUFFER_SIZE 100
 # endif
 
-typedef struct s_fragment
-{
-	char				*content;
-	struct s_fragment	*next;
-} t_fragment;
 
 
-char *get_next_line(int fd);
-int	frags_complete(t_fragment *frag);
-int	retreive_line_len(t_fragment *frag);
-t_fragment	*frag_new(void *content);
-void	add_frag(t_fragment **lst, t_fragment *new);
-void	create_line_frags(int fd, t_fragment	**frag);
-char	*retreive_line(t_fragment *frag, int len);
-void	prepare_next_line(t_fragment **frag);
-size_t	ft_strcpy(char *trg, const char *src);
 size_t	ft_strlen(const char *str);
-void	flush_frags(t_fragment **frag);
-void	free_processed_frag(t_fragment **frag, t_fragment *frag_work);
-void	free_frag(t_fragment **frag);
+char	*ft_strrchr(const char *src, int c);
+char	*ft_strjoin(char const *s1, char const *s2);
+int	ft_contains(char *haystack, char needle, long long size); // Korrigiere die Reihenfolge und stelle sicher, dass diese vor ihrer Nutzung deklariert wird.
+
+char	*get_next_line(int fd);
+char	*build_line(char *workstring);
+char	*build_workstring(int fd, char *line);
+char	*perp_next(char *workstring);
 #endif
