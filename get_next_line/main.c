@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:43:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/24 17:58:07 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 15:27:11 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,90 +27,87 @@ int	main (void)
 		perror("Fehler beim Oeffnen der Datei");
 		exit(EXIT_FAILURE);
 	}
-	// while ((line = get_next_line(fd)) != NULL)
-	// {
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
 		line = get_next_line(fd);
-		printf("R: %s\n\n", line);
+		printf("%s", line);
 		free(line);
-	// }
 	if (close(fd) == -1)
 	{
 		perror("Fehler beim Schliessen der Datei");

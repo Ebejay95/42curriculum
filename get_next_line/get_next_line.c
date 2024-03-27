@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jonathaneberle <jonathaneberle@student.    +#+  +:+       +#+        */
+/*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:17 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/24 22:08:32 by jonathanebe      ###   ########.fr       */
+/*   Updated: 2024/03/27 15:31:11 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,111 +15,72 @@
 
 int	is_readable(int fd)
 {
-	if(read(fd,NULL,0) != -1)
-		return (1);
-	return (0);
+	return (read(fd,NULL,0));
 }
 
 char *get_next_line(int fd)
 {
 	static char	*workstring;
 	char	*line;
+	int		status;
 
-	if (!is_readable(fd))
+	line = NULL;
+	status = 1;
+	if (BUFFER_SIZE <= 0 || fd < 0 || is_readable(fd) != 0)
 	{
-		if (workstring != NULL)
-		{
-			free(workstring);
-			workstring = NULL;
-		}
+		if (is_readable(fd) != 0)
+			return (NULL);
 		return (NULL);	
 	}
-	if (workstring == NULL)
-	{
-		workstring = malloc(sizeof(char));
-		*workstring = '\0';
-	}
-	workstring = build_workstring(fd, workstring);
-	if (workstring == NULL)
+	workstring = build_workstring(fd, workstring, &status);
+	if (workstring == NULL || status == -1) {
+		if(workstring != NULL){
+	    	free(workstring);
+	    	workstring = NULL;
+		}
 		return (NULL);
-	line = build_line(workstring);
-	workstring = perp_next(workstring);
-	if (workstring != NULL) {
-    	free(workstring);
-    	workstring = NULL;
 	}
+	line = build_line(workstring);
+	if (line == NULL)
+	{
+		free(workstring);
+		workstring = NULL;
+		return (NULL);
+	}
+	workstring = prep_next(workstring);
 	return (line);
 }
 
-//char *build_workstring(int fd, char *workstring)
-//{
-//	char	*range;
-//	char	*tmp;
-//	int		file_open;
-//
-//	range = malloc((BUFFER_SIZE + 1) * sizeof(char));
-//	if(range == NULL)
-//		return (NULL);
-//	file_open = read(fd, range, BUFFER_SIZE);
-//	while (file_open > 0)
-//	{
-//		range[file_open] = '\0';
-//		tmp = ft_strjoin(workstring, range);
-//		if (tmp == NULL)
-//		{
-//			free(range);
-//			free(workstring);
-//			return (NULL);
-//		}
-//		free(workstring);
-//		workstring = tmp;
-//		if (ft_contains(range, '\n', BUFFER_SIZE))
-//		{
-//			break;
-//		}
-//		file_open = read(fd, range, BUFFER_SIZE);
-//	}
-//	free(range);
-//	if (file_open == -1)
-//	{
-//		free(workstring);
-//		return (NULL);
-//	}	
-//	return (workstring);
-//}
-
-char *build_workstring(int fd, char *workstring)
+char *build_workstring(int fd, char *workstring, int *file_open)
 {
-	char	*range;
+	char	range[BUFFER_SIZE + 1];
 	char	*tmp;
-	int		file_open;
 
-	range = malloc((BUFFER_SIZE + 1) * sizeof(char));
-	if(range == NULL)
-		return (NULL);
-	file_open = 1;
-	while (file_open > 0 && !ft_contains(range, '\n', BUFFER_SIZE))
+	ft_memset(range, 0, BUFFER_SIZE + 1);
+	if (workstring == NULL)
 	{
-		file_open = read(fd, range, BUFFER_SIZE);
-		if (file_open == -1)
+		workstring = malloc((BUFFER_SIZE + 1) * sizeof(char));
+		if(workstring == NULL)
+			return (NULL);
+		ft_memset(workstring, 0, BUFFER_SIZE + 1);
+	}
+	while (*file_open > 0 && !ft_contains(range, '\n'))
+	{
+		*file_open = read(fd, range, BUFFER_SIZE);
+		if (*file_open == -1)
 		{
-			free(range);
-			free(workstring); 
+			free(workstring);
 			return (NULL);
 		}
-		range[file_open] = '\0';
-		tmp = ft_strjoin(workstring, range);
-		if (tmp == NULL)
-		{
-			free(range);
-			free(workstring); 
-			workstring = NULL;
+		if (*file_open == 0)
+			break;
+		range[*file_open] = '\0';
+		if(workstring == NULL)
 			return (NULL);
-		}
+		tmp = ft_strjoin(workstring, range); // CHANGW!!!
 		free(workstring);
 		workstring = tmp;
 	}
-	free(range);
 	return (workstring);
 }
 
@@ -145,12 +106,14 @@ char	*ft_strrchr(const char *src, int c)
 	}
 	return (NULL);
 }
-int	ft_contains(char *haystack, char needle, long long size)
+int	ft_contains(char *haystack, char needle)
 {
 	long long i;
 
 	i = 0;
-	while (i < size)
+	if(haystack == NULL)
+		return (0);
+	while (haystack[i])
 	{
 		if (haystack[i] == needle)
 			return (1);
@@ -188,25 +151,29 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 char	*build_line(char *workstring)
 {
-	char	*line;
-	int		len;
-	int		i;
+	char		*line;
+	size_t		linelen;
+	size_t		i;
 
-	len = 0;
-	if(workstring == NULL || ft_strlen(workstring) == 0)
+	i = 0;
+	linelen = 0;
+	if(workstring == NULL || workstring[i] == '\0')
 		return (NULL);
-	while (workstring[len] != '\n' && workstring[len] != '\0')
-		len++;
-	line = malloc((len + 2) * sizeof(char));
+	while (workstring[linelen] != '\n' && workstring[linelen] != '\0')
+		linelen++;
+	if (workstring[linelen] == '\n')
+		line = malloc((linelen + 2) * sizeof(char));
+	else
+		line = malloc((linelen + 1) * sizeof(char));
 	if(line == NULL)
 		return (NULL);
 	i = 0;
-	while (i < len)
+	while (i < linelen) // TODO pruefen
 	{
 		line[i] = workstring[i];
 		i++;
 	}
-	if (workstring[i] == '\n')
+	if (workstring[linelen] == '\n')
 	{
 		line[i] = '\n';
 		i++;
@@ -216,30 +183,39 @@ char	*build_line(char *workstring)
 	return (line);
 }
 
-char	*perp_next(char *workstring)
+char	*prep_next(char *workstring)
 {
 	int		i;
 	int		j;
-	int		len;
+	char	*next;
 
 	i = 0;
 	j = 0;
-	len = ft_strlen(workstring);
 	if (workstring == NULL)
    		return NULL;
-	while (i < len && workstring[i] != '\n')
+	while (workstring[i] != '\n' && workstring[i] != '\0')
 		i++;
-	if (i < len)
+	if (workstring[i] == '\0')
 	{
-		i++;
-		while (workstring[i + j] != '\0')
-		{
-			workstring[j] = workstring[i  + j];
-			j++;
-		}
-		workstring[j] = '\0';
+		free(workstring);
+		return (NULL);
 	}
-	return (workstring);
+	i++;
+	next = malloc((ft_strlen(workstring) - i + 1) * sizeof(char));
+	if (next == NULL)
+	{
+		free(workstring);
+		return (NULL);
+	}
+	while (workstring[i] != '\0')
+	{
+		next[j] = workstring[i];
+		i++;
+		j++;
+	}
+	next[j] = '\0';
+	free(workstring);
+	return (next);
 }
 
 size_t	ft_strlen(const char *str)
@@ -253,4 +229,17 @@ size_t	ft_strlen(const char *str)
 		str++;
 	}
 	return (len);
+}
+void	*ft_memset(void *start, int fill, size_t size)
+{
+	unsigned char	*work;
+
+	work = start;
+	while (size > 0)
+	{
+		*work = fill;
+		work++;
+		size--;
+	}
+	return (start);
 }
