@@ -1,0 +1,31 @@
+gnt	
+static list
+fd sol nicht 0 sin so wie auch nciht buffersize und read 0 von File sol auch nicth < 0 sein. Rechte check
+wenn da was ist einfach NULL Returnrn
+versuche die liste  (repraesentation einer line zu erstellen)
+wenn diese NULL ist returne NLL
+schreibe den list inhalt in einen Stinrg (function dafuer bauen)
+mach die liste asauber und return string
+
+create Linie
+hier mache einen loop wenn du kein item mit \n in der liste gefunden hast
+dafuer berauchen wir eine Pruefungsfuntion
+	mache einen maloc buffer + 1
+	wenn buffer nicht allociert werden konnte returne
+	lese von fd die buffersie in allocierten bereich
+	free buffer wenn read nicht lenen konnte EOF returne nichts weil void
+	sertze terinator bei ergolf tue die node ann die liste darstellen
+
+get Line 
+list NUll return NUll
+get le to newline function - return 0 if list NULL while list -next loop and echite in each strlen libft in strbuf of node
+malloc len and check NULL
+copy string - return 0 if list NULL while list -next loop and echite in each strlen libft in strbuf of node realtive index
+
+clear list 
+get last noce and chars after newlin
+
+last node
+clean node
+i k buff
+

@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/21 16:28:30 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/27 20:30:29 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/28 11:50:27 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@
 # endif
 
 size_t	ft_strlen(const char *str);
-char	*ft_strrchr(const char *src, int c);
 char	*ft_strjoin(char const *s1, char const *s2);
 int		ft_contains(char *haystack, char needle);
 char	*get_next_line(int fd);

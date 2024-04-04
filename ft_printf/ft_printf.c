@@ -6,7 +6,7 @@
 /*   By: jeberle <jeberle@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/14 10:32:58 by jeberle           #+#    #+#             */
-/*   Updated: 2024/03/27 22:00:56 by jeberle          ###   ########.fr       */
+/*   Updated: 2024/03/28 11:44:46 by jeberle          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,8 @@ int	ft_printf(const char *text, ...)
 	size_t		idx;
 	int			pr_len;
 	int			prr;
-	int			error;
 
 	idx = 0;
-	error = 0;
 	pr_len = 0;
 	va_start(args, text);
 	while (text[idx] != '\0')
@@ -102,7 +100,6 @@ int	ft_printf(const char *text, ...)
 			return (ret_error(args));
 		pr_len = pr_len + prr;
 	}
-	if (error < 0)
-		return (ret_error(args));
+	va_end(args);
 	return (pr_len);
 }
